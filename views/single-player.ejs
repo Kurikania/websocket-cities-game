@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./gamescreen.css">
+</head> 
+<body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+    </script>
+    <div id="gameScreen" class="h-100">
+        <div class="container">
+        <div id = "info">&nbsp; &nbsp; </div>
+        <div id = "cities">
+          <ul id = "msg">
+           
+            <li> </li>
+            
+          </ul>
+        </div>
+        <form id = "form"  >
+          <input type="text" id = "input" name="city">
+            <div id = "citiesInput">
+                <button id = "giveUp">Сдаюсь</button>
+                <button id="send" type="submit">Отправить</button>
+              </div>
+            </form>
+          </div>
+          <img src="./img/road-signs 1.svg" alt="">
+        <img src="./img/compass 1_up.svg" alt="">
+      </div>
+      <script src="/single-Player.js"></script> 
+</body>
+</html>

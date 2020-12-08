@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./gamescreen.css">
+  </head>
+<body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+    </script>
+    <section class="initialScreenBg" id = "main" id="initialScreen" >
+        <div class="blur">
+          <h1>ИГРА В ГОРОДА</h1>
+          <h3>Онлайн игра в названия городов</h3>
+              <div class="enterPoint">
+                  <h4>Более 15000 названий городов</h4>
+                  <button
+                    type="submit"
+                    
+                    id="newGameButton"
+                  >
+                  <img src="./img/Travel Signpost.png" alt=""> Начать новую игру
+                  </button>
+                  <h4>Ваш друг прислал вам код?</h4>
+                  
+                    <input type="text" required placeholder="" id="gameCodeInput"/>
+                    <button type="submit" id="joinGameButton">
+                  
+                  Присоединиться <img src="./img/Center of Gravity.png" alt="" srcset="">
+                  <br>
+                  </button>
+                  
+                  <button id="singlePlayer">
+                    <a href="./single-player">
+                  Играть одному 
+                    </a>
+                  </button>
+              </div>
+            </div>
+    </section>
+
+              <div id="gameScreen" class="h-100"  style = "display: none;">
+
+                <h4>Ваш код игры: <span id="gameCodeDisplay"></span></h4>
+                <div class="container">
+                <div id = "info">&nbsp; &nbsp; </div>
+                <div id = "cities">
+                <ul id = "msg"></ul>
+                </div>
+                <form action="" id = "form">
+                  <input type="text" id = "input">
+                    <div id = "citiesInput">
+                        <button id = "giveUp">Сдаюсь</button>
+                        <button id="send" type="submit">Отправить</button>
+                      </div>
+                    </form>
+                  </div>
+                  <img src="./img/road-signs 1.svg" alt="">
+                  <img src="./img/compass 1_up.svg" alt="">
+              </div>
+  <script src="./index.js"></script>
+</body>
+</html>

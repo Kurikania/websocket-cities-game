@@ -1,5 +1,3 @@
-
-
 const form = document.getElementById("form");
 const input = document.getElementById('input');
 const msg = document.getElementById('msg');
@@ -7,9 +5,12 @@ const newGameBtn = document.getElementById("newGameButton")
 const joinGameBtn = document.getElementById("joinGameButton")
 const gameCodeInput = document.getElementById('gameCodeInput')
 const giveUpBtn = document.getElementById('giveUp')
+// singlePlayer.addEventListener('click', newSingleGame)
 let playerNumber
 let gameActive = false;
+
 newGameBtn.addEventListener('click', newGame);
+
 joinGameBtn.addEventListener('click', joinGame);
 giveUpBtn.addEventListener('click', giveUp);
 
@@ -29,22 +30,30 @@ function newGame() {
   }
   
   function joinGame() {
+    if (gameCodeInput.value !== "") { 
     const roomName = gameCodeInput.value;
     socket.emit('joinGame', roomName);
-    init();
+    init();}
   }
   
   
   function init() {
-    initialScreen.style.display = "none";
-    gameScreen.style.display = "block";
+    main.style.display = "none";
+    gameScreen.style.display = "flex";
     gameActive = true;
-    
   }
+
+  socket.on('warning', function(msg){
+    info.innerText = msg;
+  });
   
+
   form.addEventListener("submit", function(e) {
-    e.preventDefault();
     const roomName = gameCodeDisplay.innerText;
+    if (!gameActive) {
+      return;
+    }
+    e.preventDefault();
     console.log(roomName);
     let obj = {msg: input.value, roomName: roomName}
     socket.emit('chat message', obj);
@@ -57,24 +66,17 @@ function newGame() {
     msg.appendChild(li);
   });
   
-  function giveUp() {
-    socket.emit('gameOver')
+  function giveUp(e) {
+    e.preventDefault()
+    const roomName = gameCodeDisplay.innerText;
+    socket.emit('gameOver', roomName);
+    gameActive = false
   }
 
-  socket.on('gameFinished', function() {
-    if (!gameActive) {
-      return;
-    }
-    data = JSON.parse(data);
-  
-    gameActive = false;
-  
-    if (data.looser === playerNumber) {
-      alert('You Win!');
-    } else {
-      alert('You Lose :(');
-    }
+  socket.on('disable', function() {
+    gameActive = false
   })
+  
   
   socket.on('tooManyPlayers', handleTooManyPlayers);
   function handleTooManyPlayers() {
@@ -88,3 +90,4 @@ function newGame() {
     initialScreen.style.display = "block";
     gameScreen.style.display = "none";
   }
+

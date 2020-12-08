@@ -1,0 +1,128 @@
+body{
+    margin: 0;
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+input[type="text"] {
+    font-size:24px;
+}
+
+li, ul {
+    list-style: none;
+}
+
+.initialScreenBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    background: url(./img/karta-rossii-s-gorodami.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -10;
+}
+
+.blur {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    left: 0px;
+    top: 0px;
+    background: rgba(248, 248, 248, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 75px;
+    line-height: 10px;
+    text-align: center;
+    color: #44448C;
+    line-height: 90px;
+    margin: 0
+}
+
+h3 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 38px;
+    line-height: 38px;
+    text-align: center;
+    color: #111116;
+    margin: 0.5rem;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-family: Tahoma;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    margin: 0;
+}
+
+
+.enterPoint{
+    width: 640px;
+    height: 551px;
+    left: calc(50% - 640px/2 - 9px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: #CAF2F0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 11px;
+    padding: 10px;
+}
+
+button { 
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    border: none;
+    text-align: center;
+    width: 308px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.enterPoint button img { 
+    height: 50%;
+}
+
+.enterPoint input {
+    width: 380px;
+    height: 80px;
+
+}
+
+#newGameButton{
+    color: #44448C;
+    background: #ACACDF;
+}
+
+#joinGameButton {
+    color: #963896;
+    background: #FCADFC;
+}
+
+#singlePlayer{
+    color: #BB9724;
+    background: #F5E8BF;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
