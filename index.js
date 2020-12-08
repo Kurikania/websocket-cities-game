@@ -5,7 +5,7 @@ const io = require('socket.io')(http)
 const path = require("path");
 const { makeid } = require('./utils');
 const { data} = require("./russia.js")
-const bodyParser = require('body-parser');
+const PORT = process.env.PORT || 3000;
 app.set("view engine", "ejs");
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
@@ -21,34 +21,7 @@ app.get('/single-player', (req, res) => {
         res.render('single-player')
   });
 
-// app.post('/single-player', (req, res) => {
-//     let citiesMatch = []
-//     var formData = req.body.city;
-//     if (cities.length === 0 && checkCity(formData) === true) { 
-//         if (req.xhr) { 
-//             for (let i = 0; i < data.length; i++) {
-//                 if (data[i].city[0].toLowerCase() ===  formData.slice(-1)) citiesMatch.push(data[i].city) 
-//             }
-//             let newCity = citiesMatch[Math.floor(Math.random() * citiesMatch.length)]
-//             cities.push(formData);
-//             cities.push(newCity);
-//             res.json(newCity);
-//         }
-//     }
-//     else if (checkCity(formData) === true ) { 
-//         for (let i = 0; i < data.length; i++) {
-//             if (data[i].city[0].toLowerCase() ===  formData.slice(-1)) citiesMatch.push(data[i].city) 
-//         }
-//         if (req.xhr) { 
-//             cities.push(formData);
-//             let newCity = citiesMatch[Math.floor(Math.random() * citiesMatch.length)]
-//             cities.push(newCity);
-//             res.json(newCity);
-//         }
-                
-//     }
-//     console.log(cities)
-//   });
+
 
 const cities = []; 
 
@@ -251,6 +224,6 @@ function checkCity(city) {
     return false
 }
 
-http.listen(3000, () => {
+http.listen(PORT, () => {
     console.log('listening on *:3000');
   });
