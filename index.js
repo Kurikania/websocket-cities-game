@@ -82,7 +82,8 @@ io.on('connection', (client) => {
                     client.broadcast.emit('warning', 'Ваш ход!');
                     clientRooms[roomName].activeUser === clientRooms[roomName].users[0] ? clientRooms[roomName].activeUser = clientRooms[roomName].users[1] :  clientRooms[roomName].activeUser = clientRooms[roomName].users[0] 
                 } else if (client.id !== clientRooms[roomName].activeUser) {
-                    io.to(roomName).emit('warning', "That's not your turn");
+                    io.to(roomName).emit('warning', "Сейчас не ваш ход");
+                    client.broadcast.emit('warning', 'Ваш ход!');
                  
                 } else if (checkCity(msg) === false) {
                     io.to(roomName).emit('warning', "Мы не знаем такой город");
@@ -189,10 +190,17 @@ io.on('connection', (client) => {
     
     function handleJoinGame(roomName) {
 
-      if(clientRooms[roomName].users.length> 1) {
+        console.log(!clientRooms[roomName])
+
+        if (!clientRooms[roomName]) {
+            client.emit('unknownCode');
+            return;
+        }
+
+      else if(clientRooms[roomName].users.length > 1) {
             client.emit('tooManyPlayers');
             return;
-      }
+      } else { 
       io.to(roomName).emit('warning', 'Ваш ход!');
     //   client.broadcast('warning', 'Ваш ход!');
       console.log("handle joing game code" + roomName)
@@ -203,6 +211,7 @@ io.on('connection', (client) => {
         client.number = 2;
         client.emit('init', 2);
         client.emit('gameCode', roomName);
+      }
       }
 
     function handleGameOver(roomName) {

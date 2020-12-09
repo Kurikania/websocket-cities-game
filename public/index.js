@@ -5,6 +5,7 @@ const newGameBtn = document.getElementById("newGameButton")
 const joinGameBtn = document.getElementById("joinGameButton")
 const gameCodeInput = document.getElementById('gameCodeInput')
 const giveUpBtn = document.getElementById('giveUp')
+const initialScreen = document.getElementById('initialScreen')
 // singlePlayer.addEventListener('click', newSingleGame)
 let playerNumber
 let gameActive = false;
@@ -28,17 +29,25 @@ function newGame() {
   socket.emit('newGame');
     init();
   }
+
+  socket.on('unknownCode', handleUnknownCode);
+
+  function handleUnknownCode() {
+    reset();
+    alert('Unknown Game Code')
+  }
   
   function joinGame() {
     if (gameCodeInput.value !== "") { 
     const roomName = gameCodeInput.value;
     socket.emit('joinGame', roomName);
-    init();}
+    init();
+    }
   }
   
   
   function init() {
-    main.style.display = "none";
+    initialScreen.style.display = "none";
     gameScreen.style.display = "flex";
     gameActive = true;
   }

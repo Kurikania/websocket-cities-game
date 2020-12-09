@@ -27,6 +27,8 @@
     background: #F1FBFC;
     height: 380px;
     width: inherit;
+    display: flex;
+    justify-content: start;
 }
 
 #citiesInput{
