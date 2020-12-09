@@ -215,7 +215,7 @@ io.on('connection', (client) => {
       }
 
     function handleGameOver(roomName) {
-        let looser = client.number; 
+        let looser = "Игрок " + client.number + " сдался"; 
         io.sockets.in(roomName).emit('warning',looser);
         io.sockets.in(roomName).emit('disable')
     }

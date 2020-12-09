@@ -87,8 +87,8 @@ h4 {
 
 .enterPoint{
     width: 640px;
-    height: 551px;
-    left: calc(50% - 640px/2 - 9px);
+    height: 450px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,11 +103,10 @@ button {
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
-    line-height: 29px;
     border: none;
     text-align: center;
-    width: 308px;
-    height: 70px;
+    width: 300px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -118,7 +117,7 @@ button {
 
 .enterPoint input {
     width: 380px;
-    height: 80px;
+    height: 60px;
 
 }
 
