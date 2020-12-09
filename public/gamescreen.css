@@ -25,7 +25,7 @@
 
 #cities {
     background: #F1FBFC;
-    height: 380px;
+    height: 300px;
     width: inherit;
     display: flex;
     justify-content: start;
@@ -56,18 +56,18 @@
 
 #info {
     background: #E5E5F0;
-    padding: 25px;
+    padding: 15px;
     width: inherit;
     border-radius: 16px;
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 16px;
     text-align: center;
 }
 
 #gameScreen input{ 
     width: 896px;
-    height: 95px;
+    height: 70px;
     align-self: center;
     background: #F7F7F7;
     border: 1px solid #C6C6C6;

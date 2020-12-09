@@ -79,7 +79,8 @@ function newGame() {
     e.preventDefault()
     const roomName = gameCodeDisplay.innerText;
     socket.emit('gameOver', roomName);
-    gameActive = false
+    gameActive = false;
+    send.innerText = "На главную"
   }
 
   socket.on('disable', function() {
