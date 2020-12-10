@@ -165,5 +165,6 @@ textarea:focus, input:focus{
     button {
         height: 50px;
         margin-bottom: 10px;
+        justify-content: center;
     }
      }
