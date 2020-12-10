@@ -2,11 +2,11 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http)
-const path = require("path");
 const { makeid } = require('./utils');
 const { data} = require("./russia.js")
 const PORT = process.env.PORT || 3000;
-app.set("view engine", "ejs");
+const path = require("path");
+app.use(express.static(path.join(__dirname, '/views')));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -14,16 +14,14 @@ app.use(express.json());
 
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render(__dirname + '/index');
   });
 
 app.get('/single-player', (req, res) => {
-        res.render('single-player')
+    res.render(__dirname + '/single-player'); 
   });
 
 
-
-const cities = []; 
 
 const clientRooms = {};
 
