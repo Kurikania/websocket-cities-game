@@ -10,7 +10,8 @@ app.use(express.static(path.join(__dirname, '/views')));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 
 app.get('/', (req, res) => {
@@ -18,7 +19,7 @@ app.get('/', (req, res) => {
   });
 
 app.get('/single-player', (req, res) => {
-    res.render(__dirname + '/single-player'); 
+    res.render('single-player'); 
   });
 
 
